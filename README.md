@@ -1,8 +1,8 @@
 # MultiLR
-A method for assigning separate learning rate schedulers to different parameters group in a model.
+A method for assigning separate learning rate schedulers to different parameters groups in a model.
 
 ## Usage
-Write a lambda function to construct a scheduler for each parameter group. 
+Write a lambda function that constructs a scheduler for each parameter group. 
 ```
 scheduler = MultiLR(optimizer, 
                 [lambda opt: torch.optim.lr_scheduler.StepLR(opt, step_size=10, gamma=0.5), 
