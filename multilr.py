@@ -26,9 +26,10 @@ class MultiLR(torch.optim.lr_scheduler._LRScheduler):
         return [group['lr'] for group in optimizer.param_groups]
 
     def step(self, epoch=None):
-        values = self._get_optimizer_lr(self.optimizer)
-        for idx, sched in enumerate(self.schedulers):
-            sched.step()
-            values[idx] = self._get_optimizer_lr(self.optimizer)[idx]
-            self._set_optimizer_lr(self.optimizer, values)
+        if self.last_epoch != -1:
+            values = self._get_optimizer_lr(self.optimizer)
+            for idx, sched in enumerate(self.schedulers):
+                sched.step()
+                values[idx] = self._get_optimizer_lr(self.optimizer)[idx]
+                self._set_optimizer_lr(self.optimizer, values)
         super().step()
