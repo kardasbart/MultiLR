@@ -1,5 +1,5 @@
 # MultiLR
-A method for assigning separate learning rate schedulers to different parameters groups in a model.
+A method for assigning separate learning rate schedulers to different parameters groups in a model. Pull requests are welcome.
 
 ## Usage
 Write a lambda function that constructs a scheduler for each parameter group. 
